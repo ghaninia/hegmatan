@@ -5,33 +5,36 @@ import LanguageContext from "../../contexts/language" ;
 import { TRANSLATION , useGetRoute } from "../../routes/api" ;
 
 
-export default function useTrans(key){
+export default function useTrans(params){
     
     const [ translations , setTranslations ] = React.useState({}) ;
     
     const language = React.useContext(LanguageContext) ;
 
-    const translationURL = useGetRoute(TRANSLATION) ;
+    const TRANSLATION_URL = useGetRoute(TRANSLATION) ;
 
-    console.log(translationURL) ;
+    React.useEffect( () => {
+        
+        fetch( TRANSLATION_URL )
+            .then( response => response.json() )
+            .then( response => setTranslations( response ) ) ;
 
-    
-
-    return key ;
-
-    // if(translations.length == 0 ) return key ;
-
-    // const parameters = key.split(".") ;
+    } , [ TRANSLATION_URL ]) ;
 
     // translations = translations?.[language] ?? {} ;
+
     
+    // params = params.split(".") ;
 
+    // console.log(
+    //     getTrans(params , translations )
+    // );
 
-    // const cloneParameter = parameter ;
-    // getTranslations = getTranslations?.[currentSystemLanguage] ?? {};
-    // parameters.forEach(parameter => {
-    //     getTranslations = getTranslations[parameter] || currentSystemLanguage + "." + cloneParameter;
-    // });
-    // return getTranslations;
+}
 
+function getTrans(params , translations){
+    const param = params.shift() ;
+    let trans = translations ;
+
+    console.log( trans ) ;
 }
