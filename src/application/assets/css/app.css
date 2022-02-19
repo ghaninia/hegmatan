@@ -71,7 +71,8 @@ body {
     font-family: 'IranYekan', sans-serif;
     font-size: 16px;
     font-weight: 600;
-    line-height: 1.7
+    line-height: 1.7 ;
+    direction: rtl;
 }
 
 a {
@@ -194,7 +195,6 @@ p {
 .prepend {
     position: absolute;
     padding: 0 15px 0 0;
-    top: 0 !important;
     bottom: 0;
     right: 0;
     line-height: 0;
@@ -1677,7 +1677,12 @@ a.dropdown-item {
     padding: 30px;
     background: #fff;
     border-radius: 6px;
-    box-shadow: 0 0 30px rgba(0, 0, 0, .03)
+    box-shadow: 0 0 30px rgba(0, 0, 0, .03) ;
+    transition: all .3s ease ;
+}
+
+.sign form:hover {
+    box-shadow: 0 10px 30px rgba(0, 0, 0, .08) ;
 }
 
 .sign img {
@@ -2483,4 +2488,27 @@ a.dropdown-item {
     .modal-xl {
         max-width: 890px
     }
+}
+
+.loader {
+    margin: 0 auto;
+    border : 2px #fff solid ;
+    border-top-color: transparent ;
+    border-bottom-color: transparent ;
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    -webkit-animation: spin 1s linear infinite; /* Safari */
+    animation: spin 1s linear infinite;
+}
+
+/* Safari */
+@-webkit-keyframes spin {
+    0% { -webkit-transform: rotate(0deg); }
+    100% { -webkit-transform: rotate(360deg); }
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
 }

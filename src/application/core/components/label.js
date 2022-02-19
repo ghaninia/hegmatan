@@ -1,5 +1,5 @@
 const Label = (props) => {
-    const { children , otherProps } = props ;
+    const { children , ...otherProps } = props ;
 
     return (
         <label {...otherProps}>

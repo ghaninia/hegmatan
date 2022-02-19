@@ -1,40 +1,25 @@
-import React from "react" ;
-
-import LanguageContext from "../../contexts/language" ;
-
-import { TRANSLATION , useGetRoute } from "../../routes/api" ;
+import {useContext } from "react";
+import TranslationContext from "../../contexts/translation";
+import LanguageContext from "../../contexts/language";
 
 
-export default function useTrans(params){
-    
-    const [ translations , setTranslations ] = React.useState({}) ;
-    
-    const language = React.useContext(LanguageContext) ;
-
-    const TRANSLATION_URL = useGetRoute(TRANSLATION) ;
-
-    React.useEffect( () => {
-        
-        fetch( TRANSLATION_URL )
-            .then( response => response.json() )
-            .then( response => setTranslations( response ) ) ;
-
-    } , [ TRANSLATION_URL ]) ;
-
-    // translations = translations?.[language] ?? {} ;
-
-    
-    // params = params.split(".") ;
-
-    // console.log(
-    //     getTrans(params , translations )
-    // );
-
+export const fetchAndSaveTranslations = (routeUrl , setTranslations) => {
+    fetch(routeUrl)
+        .then(response => response.json())
+        .then(response => setTranslations(response));
 }
 
-function getTrans(params , translations){
-    const param = params.shift() ;
-    let trans = translations ;
+const useTrans = (params) => {
 
-    console.log( trans ) ;
+    let translations = useContext(TranslationContext);
+    let language = useContext(LanguageContext);
+
+    translations = translations?.[language] ?? {};
+
+    const trans = params.split('.').reduce((acc, part) => acc && acc[part], translations);
+
+    return trans === undefined ? params : trans;
 }
+
+
+export default useTrans ;

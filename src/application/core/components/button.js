@@ -1,12 +1,15 @@
 import React from "react" ;
+import Spinner from "./spinner";
 
 const Button = React.forwardRef((props , ref) => {
-    
-    const {children , otherProps} = props ;
+
+    const {children , isProgress , ...otherProps} = props ;
+
+    const label = isProgress ? <Spinner/> : children ;
 
     return (
         <button className="btn primary" {...otherProps}>
-            {children}
+            {label}
         </button>
     )
 

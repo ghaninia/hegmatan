@@ -1,34 +1,35 @@
-import React from "react" ;
+import {useForm} from "react-hook-form";
+import {Button, Form, FormGroup, Input} from "../../core/components";
+import useTrans from "../../core/hooks/trans";
 import Layout from "./layouts" ;
-import { useForm } from "react-hook-form";
-import { Form , Input , Button , FormGroup } from "../../core/components" ;
+import {useState} from "react";
 
-import {useGetRoute , LOGIN} from "../../routes/api" ;
+export default function Login(props) {
 
-import useTrans from  "../../core/hooks/trans" ;
+    const { register, handleSubmit, watch, formState: { errors } } = useForm();
 
-export default function Login(props){ 
+    const [isProgress , setIsProgress] = useState(false) ;
 
-  const { register, handleSubmit , formState: { errors } } = useForm();
+    const onSubmit = (data) => {
+        setIsProgress(prev => true ) ;
+    }
 
-  return (
-    <Layout>
-      <Form>
-        <FormGroup label={ useTrans("dashboard.fields.username") }>
-            <div className="prepend h3">
-              <i className="lni lni-user"></i>
-            </div>
-            <Input { ...register("username" , { required: true }) } />
-        </FormGroup>
-        <FormGroup>
-            <div className="prepend h3">
-              <i className="lni lni-lock-alt"></i>
-            </div>
-            <Input { ...register("username" , { required: true }) } />
-        </FormGroup>
-        <Button />
-      </Form>
-    </Layout>
-  );
-
+    return (
+        <Layout>
+            <Form onSubmit={handleSubmit(onSubmit)} >
+                <FormGroup label={ useTrans("dashboard.fields.username") } icon="lni lni-user">
+                    <Input { ...register("username" , { required: true }) }/>
+                </FormGroup>
+                <FormGroup label={ useTrans("dashboard.fields.password") } >
+                    <div className="prepend h3">
+                        <i className="lni lni-lock-alt"></i>
+                    </div>
+                    <Input { ...register("password" , { required: true }) }/>
+                </FormGroup>
+                <Button isProgress={ isProgress }>
+                    { useTrans("dashboard.login.submit")}
+                </Button>
+            </Form>
+        </Layout>
+    );
 }
