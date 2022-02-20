@@ -9,10 +9,12 @@ export default (props) => {
 
 function Generator(props){
 
-    const items = props.items ?? props.childrens ; 
+    let { items , childrens , ...otherProps } = props ;
+
+    items = items ?? childrens ;
 
     return (
-        <UL {...props}>
+        <UL {...otherProps}>
             { items.map(function(item , key){
 
                 return <LI {...item} key={key} />
@@ -39,7 +41,6 @@ function LI(props){
             <LINK {...props} onClick={ () => { toggleHandle( prev => !prev ) } } />
 
             { canShowChilds ? <Generator {...props} /> : "" }
-            
         </li>
     );
 }

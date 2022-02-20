@@ -1,26 +1,43 @@
 import Auth from "../pages/auth" ;
+import Dashboard from "../pages/dashboard";
+
+export const KEYS = {
+    HOME : "/" ,
+    AUTH : {
+        LOGIN : "/auth/login" ,
+        REGISTER: "/auth/register" ,
+        FORGET : "/auth/forget" ,
+    },
+    DASHBOARD : {
+        MAIN : "/dashboard" ,
+        USERS : {
+            INDEX : "/dashboard/users" ,
+        }
+    },
+}
 
 const Web = [
     {
-        path: "/" ,
+        path: KEYS.HOME,
         exact: true,
         main: () => <h2>main</h2>
     },
     {
-        path: "/auth",
-        main: () => "auth"
-    },
-    {
-        path: "/auth/login",
+        path: KEYS.AUTH.LOGIN ,
         main: () =>  <Auth.Login />
     },
     {
-        path: "/auth/register",
-        main: () => <h2>Shoelaces</h2>
+        path: KEYS.AUTH.REGISTER ,
+        main: () => <Auth.Register />
     },
     {
-        path: "/auth/forget",
-        main: () => <h2>Shoelaces</h2>
+        path: KEYS.AUTH.FORGET ,
+        main: () => <h2>FORGET</h2>
+    },
+    {
+        path: KEYS.DASHBOARD.MAIN,
+        exact: true,
+        main: () => <Dashboard />
     }
 ]
 

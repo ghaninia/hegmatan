@@ -3,12 +3,14 @@ import Spinner from "./spinner";
 
 const Button = React.forwardRef((props , ref) => {
 
-    const {children , isProgress , ...otherProps} = props ;
+    const {children , isLoading , ...otherProps} = props ;
 
-    const label = isProgress ? <Spinner/> : children ;
+    const label = isLoading ? <Spinner/> : children ;
+
+    const disabled = isLoading ? true : false ;
 
     return (
-        <button className="btn primary" {...otherProps}>
+        <button disabled={disabled} className="btn primary" {...otherProps}>
             {label}
         </button>
     )
