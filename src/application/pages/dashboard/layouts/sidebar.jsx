@@ -3,6 +3,7 @@ import useTrans from "../../../core/hooks/trans";
 import {KEYS} from "../../../routes/web";
 import Menu from "../../../core/components/menu";
 import URL from "../../../routes";
+import {Link} from "react-router-dom";
 
 export default function Sidebar () {
 
@@ -27,17 +28,18 @@ export default function Sidebar () {
 
                 <Menu items={ items }  />
 
-                {/*<div className="user">*/}
-                {/*    <div className="dropdown">*/}
-                {/*      */}
-                {/*        <div className="dropdown-menu">*/}
-                {/*            <a href="user.html" className="dropdown-item">پروفایل</a>*/}
-                {/*            <a href="settings.html" className="dropdown-item">تنظیمات</a>*/}
-                {/*            <a href="sign-in.html" className="dropdown-item">خروج</a>*/}
-                {/*        </div>*/}
-                {/*        */}
-                {/*    </div>*/}
-                {/*</div>*/}
+                <div className="user">
+                    <div className="dropdown show">
+                        <div className="picture">
+                            <img src="" alt=""/>
+                        </div>
+                        {/*<div className="dropdown-menu show">*/}
+                        {/*    <a className="dropdown-item">{ useTrans("dashboard.sidebar.users.profile.label") }</a>*/}
+                        {/*    <a className="dropdown-item">{ useTrans("dashboard.sidebar.users.profile.setting") }</a>*/}
+                        {/*    <a className="dropdown-item">{ useTrans("dashboard.sidebar.users.profile.signout") }</a>*/}
+                        {/*</div>*/}
+                    </div>
+                </div>
 
             </div>
         </div>

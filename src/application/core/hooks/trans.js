@@ -16,7 +16,7 @@ const useTrans = (params) => {
 
     translations = translations?.[language] ?? {};
 
-    const trans = params.split('.').reduce((acc, part) => acc && acc[part], translations);
+    const trans = params.split('.').reduce((prev, part) => prev && prev[part], translations);
 
     return trans === undefined ? params : trans;
 }

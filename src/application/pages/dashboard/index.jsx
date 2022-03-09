@@ -7,6 +7,7 @@ const Dashboard = () => {
             <nav className="navigation">
                 <Sidebar />
             </nav>
+
         </div>
     );
 }
