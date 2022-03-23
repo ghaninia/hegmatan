@@ -22,6 +22,17 @@ const URL = {
     REGISTER :  "api.v1.authunticate.register.store" ,
     VERIFY_REGISTER :  "api.v1.authunticate.register.verify" ,
     TRANSLATION :  "api.v1.translations" ,
+
+    DASHBOARD: {
+        WIDGET : {
+            STATISTIC : {
+                POSTS : "api.v1.widget.statistic.posts"
+            }
+        }
+    }
+
 } ;
+
+
 
 export default URL ;

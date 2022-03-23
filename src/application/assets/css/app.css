@@ -65,6 +65,9 @@
     src: url(../fonts/iranyekanwebregular.eot) format("embedded-opentype"),url(../fonts/iranyekanwebregular.woff) format("woff"),url(../fonts/iranyekanwebregular.ttf) format("truetype")
 }
 
+.heavy {
+    font-family: YekanBakhHeavy , IRANYekanBold ;
+}
 
 body {
     background: #fbfbfb;
@@ -2574,4 +2577,52 @@ a.dropdown-item {
     height: 100% ;
     margin : 0 ;
     display: unset ;
+}
+
+.unset {
+    display: unset !important;
+}
+.unset:after , .unset:before ,
+.unset div:after , .unset div:before {
+    display: none !important ;
+    content : "" !important ;
+}
+
+
+/** widget **/
+
+.widget {
+    margin-bottom: 1.875rem;
+    background-color: #fff;
+    transition: all .5s ease-in-out;
+    position: relative;
+    border: 0px solid transparent;
+    border-radius: 1.25rem;
+    box-shadow: 0px 12px 23px 0px rgb(172 57 212 / 4%);
+    height: calc(100% - 30px);
+}
+.widget {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    word-wrap: break-word;
+    background-color: #fff;
+    background-clip: border-box;
+    border-radius: 0.75rem;
+}
+.align-items-center {
+    align-items: center !important;
+}
+.widget-body {
+    padding: 1.875rem;
+}
+.widget-body {
+    flex: 1 1 auto;
+    min-height: 1px;
+    padding: 1.25rem;
+}
+.media-body {
+    flex: 1;
+    text-align: right;
 }

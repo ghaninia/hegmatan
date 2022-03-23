@@ -1,4 +1,5 @@
 import axios from "axios";
+import storage , {KEYS} from "./storage";
 
 export default class Request{
 
@@ -9,13 +10,28 @@ export default class Request{
     }
 
     async request(method) {
-        const { url , data , headers} = this ;
+        let { url , data , headers} = this ;
+
+        if(this.token !== undefined) {
+            headers = {
+                ...headers ,
+                "Authorization" : "bearer " + this.token
+            } ;
+        }
+
+        console.log(this.token) ;
+
         return await axios({
             method ,
             url ,
             headers ,
             data
         });
+    }
+
+    auth(){
+        this.token = storage.get(KEYS.TOKEN) ;
+        return this ;
     }
 
     post(){

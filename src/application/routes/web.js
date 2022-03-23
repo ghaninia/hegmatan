@@ -1,5 +1,6 @@
 import Auth from "../pages/auth" ;
 import Dashboard from "../pages/dashboard";
+import Profile from "../pages/dashboard/profile";
 
 export const KEYS = {
     HOME : "/" ,
@@ -12,6 +13,10 @@ export const KEYS = {
         MAIN : "/dashboard" ,
         USERS : {
             INDEX : "/dashboard/users" ,
+        },
+        PROFILE : {
+            INDEX : "/dashboard/profile" ,
+            SETTING : "/dashboard/profile/setting" ,
         }
     },
 }
@@ -38,6 +43,14 @@ const Web = [
         path: KEYS.DASHBOARD.MAIN,
         exact: true,
         main: () => <Dashboard />
+    },
+    {
+        path : KEYS.DASHBOARD.PROFILE.INDEX ,
+        main: () => <Profile />
+    },
+    {
+        path : KEYS.DASHBOARD.PROFILE.SETTING ,
+        main: () => <Profile.Setting />
     }
 ]
 

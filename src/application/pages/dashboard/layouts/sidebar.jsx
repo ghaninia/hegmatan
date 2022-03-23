@@ -1,9 +1,11 @@
-import React , {useState} from "react"
+import React from "react"
 import useTrans from "../../../core/hooks/trans";
 import {KEYS} from "../../../routes/web";
 import Menu from "../../../core/components/menu";
-import URL from "../../../routes";
-import {Link} from "react-router-dom";
+import {Dropdown} from "react-bootstrap";
+import { NavLink} from "react-router-dom";
+import Auth from "../../../core/classes/auth";
+import storage  from "../../../core/classes/storage";
 
 export default function Sidebar () {
 
@@ -22,23 +24,34 @@ export default function Sidebar () {
         } ,
     ]
 
+    const logout = () => {
+        Auth.logout() ;
+        storage.flash(KEYS.AUTHUSER) ;
+    }
+
     return (
         <div className="container">
             <div className="menu collapse" id="content">
-
                 <Menu items={ items }  />
-
                 <div className="user">
-                    <div className="dropdown show">
-                        <div className="picture">
-                            <img src="" alt=""/>
-                        </div>
-                        {/*<div className="dropdown-menu show">*/}
-                        {/*    <a className="dropdown-item">{ useTrans("dashboard.sidebar.users.profile.label") }</a>*/}
-                        {/*    <a className="dropdown-item">{ useTrans("dashboard.sidebar.users.profile.setting") }</a>*/}
-                        {/*    <a className="dropdown-item">{ useTrans("dashboard.sidebar.users.profile.signout") }</a>*/}
-                        {/*</div>*/}
-                    </div>
+                    <Dropdown>
+                        <Dropdown.Toggle className="unset" variant="">
+                            <div className="picture">
+                                <img src="" alt=""/>
+                            </div>
+                        </Dropdown.Toggle>
+                        <Dropdown.Menu>
+                            <NavLink className="dropdown-item" to={KEYS.DASHBOARD.PROFILE.INDEX}>
+                                { useTrans("dashboard.sidebar.users.profile.label") }
+                            </NavLink>
+                            <NavLink className="dropdown-item" to={KEYS.DASHBOARD.PROFILE.SETTING}>
+                                { useTrans("dashboard.sidebar.users.profile.setting") }
+                            </NavLink>
+                            <Dropdown.Item onClick={ () =>  logout()   }>
+                                { useTrans("dashboard.sidebar.users.profile.signout") }
+                            </Dropdown.Item>
+                        </Dropdown.Menu>
+                    </Dropdown>
                 </div>
 
             </div>

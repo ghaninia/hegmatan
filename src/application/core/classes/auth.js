@@ -24,5 +24,13 @@ export default class Auth{
         return storage.set(KEYS.TOKEN , token ) ;
     }
 
+    static logout()
+    {
+        if(storage.has(KEYS.TOKEN) ) {
+            return storage.flash(KEYS.TOKEN) ;
+        }
+
+        return false ;
+    }
 
 }
