@@ -2,6 +2,10 @@ import storage, {KEYS} from "./storage";
 
 export default class Auth{
 
+    static picture(){
+        let user = this.user() ;
+    }
+
     static login(){
         return (
             storage.has(KEYS.AUTHUSER) && storage.has(KEYS.TOKEN)
@@ -29,7 +33,6 @@ export default class Auth{
         if(storage.has(KEYS.TOKEN) ) {
             return storage.flash(KEYS.TOKEN) ;
         }
-
         return false ;
     }
 

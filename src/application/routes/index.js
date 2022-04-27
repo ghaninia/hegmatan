@@ -13,7 +13,7 @@ export const searchUrl = (urlContext , routeName ) => {
         return route["as"] === routeName ;
     });
 
-    return findRoute.length ? findRoute[0]["uri"] :  "" ;
+    return findRoute.length ? findRoute[0]["uri"] :  null ;
 }
 
 
@@ -26,7 +26,8 @@ const URL = {
     DASHBOARD: {
         WIDGET : {
             STATISTIC : {
-                POSTS : "api.v1.widget.statistic.posts"
+                POSTS : "api.v1.widget.statistic.posts" ,
+                USERS : "api.v1.widget.statistic.users" ,
             }
         }
     }

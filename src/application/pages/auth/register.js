@@ -1,4 +1,4 @@
-import {Button, Form, FormGroup, Input} from "../../core/components";
+import {Button, Form, FormGroupWithIcon, Input} from "../../core/components";
 import Layout from "./layouts" ;
 import {useForm} from "react-hook-form";
 import setTitle from "../../core/classes/documentor";
@@ -52,15 +52,15 @@ export default function Register(props){
         <Layout>
             { redirect ? <Navigate to={redirect}  /> : "" }
             <Form onSubmit={handleSubmit(onSubmit)} >
-                <FormGroup label={ useTrans("dashboard.fields.name") } icon="lni lni-users">
+                <FormGroupWithIcon label={ useTrans("dashboard.fields.name") } icon="lni lni-users">
                     <Input  { ...register("name" ) }/>
-                </FormGroup>
-                <FormGroup label={ useTrans("dashboard.fields.email") } icon="lni lni-envelope">
+                </FormGroupWithIcon>
+                <FormGroupWithIcon label={ useTrans("dashboard.fields.email") } icon="lni lni-envelope">
                     <Input type="email"  { ...register("email" ) }/>
-                </FormGroup>
-                <FormGroup label={ useTrans("dashboard.fields.password") } icon="lni lni-lock-alt">
+                </FormGroupWithIcon>
+                <FormGroupWithIcon label={ useTrans("dashboard.fields.password") } icon="lni lni-lock-alt">
                     <Input type="password"  { ...register("password" ) }/>
-                </FormGroup>
+                </FormGroupWithIcon>
                 <Button isLoading={isLoading}>{ useTrans("dashboard.register.submit")}</Button>
             </Form>
             <div className="callout">

@@ -1,4 +1,4 @@
-import {Button, Form, FormGroup, Input} from "../../core/components";
+import {Button, Form, FormGroupWithIcon, Input} from "../../core/components";
 
 import Request from "../../core/classes/request";
 import useTrans from "../../core/hooks/trans";
@@ -59,16 +59,16 @@ export default function Login(props) {
         <Layout>
             { redirect ? <Navigate to={redirect}  /> : "" }
             <Form onSubmit={handleSubmit(onSubmit)} >
-                <FormGroup label={ useTrans("dashboard.fields.email") } icon="lni lni-users">
+                <FormGroupWithIcon label={ useTrans("dashboard.fields.email") } icon="lni lni-users">
                     <Input { ...register("email" , { required: true }) }/>
-                </FormGroup>
-                <FormGroup label={ useTrans("dashboard.fields.password") } >
+                </FormGroupWithIcon>
+                <FormGroupWithIcon label={ useTrans("dashboard.fields.password") } >
                     <Link to={ KEYS_ROUTE.AUTH.FORGET }>{ useTrans("dashboard.login.forget") }</Link>
                     <div className="prepend h3">
                         <i className="lni lni-lock-alt"></i>
                     </div>
                     <Input type="password" { ...register("password" , { required: true }) }/>
-                </FormGroup>
+                </FormGroupWithIcon>
                 <Button isLoading={ isLoading }>
                     { useTrans("dashboard.login.submit")}
                 </Button>

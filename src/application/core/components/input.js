@@ -21,10 +21,12 @@ const Input = React.forwardRef((props , ref) => {
         type = show ? "text" : "password" ;
     }
 
+    const [value , setValue ] = useState("") ;
+
     return (
         <>
             { showEyeComponent }
-            <input type={ type } className="form-control" {...otherProps} ref={ref} />
+            <input type={ type } className="form-control" {...otherProps} ref={ref} value={ value } onChange={ e => setValue(e.target.value) } />
         </>
     )
 })

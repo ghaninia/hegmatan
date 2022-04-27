@@ -1,9 +1,9 @@
-import { BrowserRouter , Route, Routes } from 'react-router-dom';
+import {BrowserRouter, Navigate, Route, Routes} from 'react-router-dom';
 
-import web from "../routes/web" ;
+import web , { KEYS } from "../routes/web" ;
+import Auth from "./classes/auth";
 
 export default function Routers(){
-    
     return (
         <BrowserRouter>
             <Routes>
@@ -12,10 +12,11 @@ export default function Routers(){
                         key={index}
                         path={route.path}
                         exact={route.exact ?? false}
-                        element={<route.main />}
+                        element={  <route.main /> }
                     />
                 )}
              </Routes>
          </BrowserRouter>
     );
 }
+

@@ -66,15 +66,28 @@
 }
 
 .heavy {
-    font-family: YekanBakhHeavy , IRANYekanBold ;
+    font-family: YekanBalkhHeavy ;
 }
 
 body {
-    background: #fbfbfb;
+    background: #EAECEF;
     font-size: 16px;
     font-weight: 600;
     line-height: 1.7 ;
     direction: rtl;
+    position: relative ;
+}
+
+body:after {
+    display: block;
+    content : "" ;
+    background: linear-gradient(to left , #222853 , #294379) ;
+    height : 140px ;
+    position: absolute;
+    top : 0 ;
+    left :0 ;
+    right : 0 ;
+    z-index: -1;
 }
 
 * {
@@ -156,6 +169,7 @@ p {
 }
 
 .form-row {
+    flex-direction: row !important;
     -ms-flex-align: center;
     align-items: center;
     margin-right: -15px;
@@ -603,9 +617,9 @@ a.dropdown-item {
     display: block
 }
 
-.navigation .menu ul>li + li {
-    margin-top: 15px
-}
+/*.navigation .menu ul>li + li {*/
+/*    margin-top: 15px*/
+/*}*/
 
 .navigation .menu ul>li .feather {
     width: 10px;
@@ -621,6 +635,8 @@ a.dropdown-item {
     color: #bdbac2;
     display: flex;
     align-items: center;
+    padding: 8px;
+    border-radius: 35px;
 }
 
 .navigation .menu ul>li>a.active {
@@ -629,7 +645,7 @@ a.dropdown-item {
 
 .navigation .menu ul>li>a>i{
     display: block;
-    padding-left : 5px ;
+    padding: 0 10px;
 }
 
 .navigation .menu ul>li.active a {
@@ -637,7 +653,8 @@ a.dropdown-item {
 }
 
 .navigation .menu ul>li a:hover {
-    color: #007bff
+    color: #2c4982!important ;
+    background: #eef2f8!important ;
 }
 
 .navigation .menu ul>li>a[data-toggle="collapse"] {
@@ -2596,21 +2613,14 @@ a.dropdown-item {
     background-color: #fff;
     transition: all .5s ease-in-out;
     position: relative;
-    border: 0px solid transparent;
     border-radius: 1.25rem;
-    box-shadow: 0px 12px 23px 0px rgb(172 57 212 / 4%);
     height: calc(100% - 30px);
-}
-.widget {
-    position: relative;
     display: flex;
     flex-direction: column;
     min-width: 0;
     word-wrap: break-word;
-    background-color: #fff;
-    background-clip: border-box;
-    border-radius: 0.75rem;
 }
+
 .align-items-center {
     align-items: center !important;
 }
@@ -2625,4 +2635,155 @@ a.dropdown-item {
 .media-body {
     flex: 1;
     text-align: right;
+}
+
+
+.widget .icon {
+    display: flex ;
+    justify-content: center;
+    align-items: center ;
+    height: 40px ;
+    width : 40px ;
+    border-radius: 50% ;
+    padding: 0 ;
+    margin: 0 ;
+    overflow: hidden;
+    line-height: 0 ;
+}
+
+.page {
+    position: relative ;
+    display: block ;
+    border-radius: 5px ;
+    box-shadow: 0 4px 8px 0 rgb(19 37 71 / 10%);
+    background-color: #fff;
+}
+
+
+.page .page-title {
+    display: flex;
+    align-items: center;
+    height: auto ;
+    border-bottom: 1px rgba(0,0,0,.05) solid ;
+}
+
+.page .page-title .page-title_back {
+    display: flex ;
+    align-items: center;
+    justify-content: center;
+    height: 100% ;
+    width: auto ;
+    padding : 20px 30px ;
+    border-left: 1px rgba(0,0,0,.05) solid;
+    cursor: pointer;
+}
+
+
+.page .page-title .page-title_back {
+    display: flex ;
+    align-items: center;
+    justify-content: center;
+    height: 100% ;
+    width: auto ;
+    padding : 40px 30px ;
+    border-left: 1px rgba(0,0,0,.05) solid;
+    cursor: pointer;
+}
+
+.page .page-title .page-title_body{
+    display: flex ;
+    justify-content: center ;
+    flex-direction: column;
+    height: 100% ;
+    flex : 1;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    padding: 10px 20px ;
+}
+
+.page .page-title .page-title_body h1 {
+    font-size : 120% ;
+    font-family: YekanBalkhHeavy
+}
+
+.page .page-body {
+    padding: 40px ;
+}
+
+.page .form-group {
+    display: block;
+    position: relative;
+    padding: 0;
+}
+
+.page .form-group label {
+    display: block;
+    position: absolute;
+    font-size: 75%;
+    top: calc(50% - 11px);
+    right: 15px;
+    color: #4e555b !important ;
+    transition: all .2s ease ;
+}
+
+.page .form-group.ltr label{
+    left : 15px
+}
+
+.page .form-group input.form-control ,
+.page .form-group textarea.form-control{
+    display: unset;
+    background: #fff ;
+    padding : 12px !important;
+    height: auto ;
+    border: 1px #D5D7E1 solid ;
+    border-radius: 5px;
+    font-size: 14px ;
+    color: #272727;
+}
+
+.page .form-group textarea.form-control {
+    padding : 40px 12px 12px !important;
+}
+
+.page .form-group input.form-control:focus ~ label ,
+.page .form-group input.form-control:not([value = ""]) ~ label
+{
+    background: #fff ;
+    top : -10px ;
+    font-size : 70% ;
+    padding: 0 5px ;
+    border-radius: 10px ;
+}
+
+.page .form-group textarea.form-control:focus  ~ label ,
+.page .form-group textarea.form-control.filled ~ label
+{
+    top : 10px ;
+}
+
+.page .form-group textarea.form-control:focus  {
+    border : 1px solid #2b4a83 !important ;
+    box-shadow: 0 0 2px #2b4a83
+}
+
+.page .form-group input.form-control:focus ,
+.page .form-group input.form-control:active ,
+.page .form-group textarea.form-control:focus ,
+.page .form-group textarea.form-control:active {
+    border : 1px solid #2b4a83 !important ;
+    box-shadow: 0 0 2px #2b4a83
+}
+
+.page button.btn.primary {
+    color: #fff;
+    background: #2b4a83;
+    box-shadow: 0 2px 5px 0 rgb(0 0 0 / 20%);
+    border-radius: 10px;
+    font-size: 14px;
+    width: -moz-max-content;
+    width: max-content;
+    height: 34px;
+    position: relative;
+    padding: 0 14px;
 }

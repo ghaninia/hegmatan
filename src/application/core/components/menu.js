@@ -47,7 +47,7 @@ function LI(props){
 
 function LINK(props){
     return (
-        <NavLink {...props} >
+        <NavLink  {...props} >
             <i className={props.icon} ></i>
             {props.label}
         </NavLink>

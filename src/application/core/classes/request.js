@@ -15,11 +15,9 @@ export default class Request{
         if(this.token !== undefined) {
             headers = {
                 ...headers ,
-                "Authorization" : "bearer " + this.token
+                "Authorization" : "Bearer " + this.token
             } ;
         }
-
-        console.log(this.token) ;
 
         return await axios({
             method ,

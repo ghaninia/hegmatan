@@ -1,6 +1,7 @@
 import Auth from "../pages/auth" ;
 import Dashboard from "../pages/dashboard";
-import Profile from "../pages/dashboard/profile";
+import Profile , { Password as ProfilePassword } from "../pages/dashboard/profile";
+import Users from "../pages/dashboard/user";
 
 export const KEYS = {
     HOME : "/" ,
@@ -14,9 +15,20 @@ export const KEYS = {
         USERS : {
             INDEX : "/dashboard/users" ,
         },
+        ROLES : {
+            INDEX : "/dashboard/roles" ,
+        },
         PROFILE : {
             INDEX : "/dashboard/profile" ,
-            SETTING : "/dashboard/profile/setting" ,
+            PASSWORD : "/dashboard/profile/password" ,
+        },
+        TAGS : {
+            INDEX : "/dashboard/tags" ,
+            CREATE : "/dashboard/tags/create" ,
+        },
+        CATEGORIES : {
+            INDEX : "/dashboard/categories" ,
+            CREATE : "/dashboard/categories/create" ,
         }
     },
 }
@@ -24,33 +36,43 @@ export const KEYS = {
 const Web = [
     {
         path: KEYS.HOME,
-        exact: true,
-        main: () => <h2>main</h2>
+        main: () => <h2>main</h2> ,
+        middleware : [ "guest" ]
     },
     {
         path: KEYS.AUTH.LOGIN ,
-        main: () =>  <Auth.Login />
+        main: () =>  <Auth.Login />,
+        middleware : [ "guest" ]
     },
     {
         path: KEYS.AUTH.REGISTER ,
-        main: () => <Auth.Register />
+        main: () => <Auth.Register />,
+        middleware : [ "guest" ]
     },
     {
         path: KEYS.AUTH.FORGET ,
-        main: () => <h2>FORGET</h2>
+        main: () => <h2>FORGET</h2>,
+        middleware : [ "guest" ]
     },
     {
         path: KEYS.DASHBOARD.MAIN,
-        exact: true,
-        main: () => <Dashboard />
+        main: () => <Dashboard /> ,
+        middleware : [ "auth" ]
     },
     {
         path : KEYS.DASHBOARD.PROFILE.INDEX ,
-        main: () => <Profile />
+        main: () => <Profile /> ,
+        middleware : [ "auth" ]
     },
     {
-        path : KEYS.DASHBOARD.PROFILE.SETTING ,
-        main: () => <Profile.Setting />
+        path : KEYS.DASHBOARD.PROFILE.PASSWORD ,
+        main: () => <ProfilePassword /> ,
+        middleware : [ "auth" ]
+    },
+    {
+        path : KEYS.DASHBOARD.USERS.INDEX ,
+        main: () => <Users /> ,
+        middleware : [ "auth" ]
     }
 ]
 

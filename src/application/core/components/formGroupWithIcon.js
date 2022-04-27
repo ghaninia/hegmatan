@@ -1,5 +1,5 @@
 import Label from "./label" ;
-const FormGroup = (props) => {
+const FormGroupWithIcon = (props) => {
 
     let { className , children , label , icon } = props ;
 
@@ -9,11 +9,12 @@ const FormGroup = (props) => {
 
     return (
         <div className={ className }>
-            {children}
             <Label>{ label }</Label>
+            {icon}
+            {children}
         </div>
     );
 }
 
 
-export default FormGroup ;
+export default FormGroupWithIcon ;
