@@ -16,7 +16,6 @@ export default function Sidebar () {
             label : useTrans("dashboard.sidebar.main"),
             icon: "lni lni-grid-alt" ,
             to : KEYS.DASHBOARD.MAIN ,
-            exact : true
         } ,
         {
             label : useTrans("dashboard.sidebar.users.label"),
@@ -46,6 +45,22 @@ export default function Sidebar () {
             permissions : [
             ]
         } ,
+        {
+            label : useTrans("dashboard.sidebar.shopping.label"),
+            icon : "lni lni-gift" ,
+            to : KEYS.DASHBOARD.CATEGORIES.INDEX,
+            childrens : [
+                {
+                    label : useTrans("dashboard.sidebar.shopping.products"),
+                    icon : "lni lni-dollar" ,
+                    to : KEYS.DASHBOARD.CATEGORIES.INDEX,
+                    permissions : [
+                    ]
+                } ,
+            ],
+            permissions : [
+            ]
+        } ,
     ]
 
     const logout = () => {
@@ -66,10 +81,10 @@ export default function Sidebar () {
                             </div>
                         </Dropdown.Toggle>
                         <Dropdown.Menu>
-                            <NavLink exact  className="dropdown-item" to={KEYS.DASHBOARD.PROFILE.INDEX}>
+                            <NavLink className="dropdown-item" to={KEYS.DASHBOARD.PROFILE.INDEX}>
                                 { useTrans("dashboard.sidebar.profile.label") }
                             </NavLink>
-                            <NavLink exact  className="dropdown-item" to={KEYS.DASHBOARD.PROFILE.PASSWORD}>
+                            <NavLink className="dropdown-item" to={KEYS.DASHBOARD.PROFILE.PASSWORD}>
                                 { useTrans("dashboard.sidebar.profile.password") }
                             </NavLink>
                             <Dropdown.Item onClick={ () =>  logout()   }>

@@ -31,7 +31,8 @@ export default class Auth{
     static logout()
     {
         if(storage.has(KEYS.TOKEN) ) {
-            return storage.flash(KEYS.TOKEN) ;
+            storage.flash(KEYS.TOKEN)
+            storage.flash(KEYS.AUTHUSER)  ;
         }
         return false ;
     }
