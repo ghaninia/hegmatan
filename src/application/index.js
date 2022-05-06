@@ -11,9 +11,9 @@ import Routers from "./core/routers";
 import {ToastContainer} from "react-toastify";
 import AuthunticateContext from "./contexts/authunticate";
 import Request from "./core/classes/request";
+import Loading from "./core/components/loading" ;
 
-export default function App()
-{ 
+const App = () => { 
     /** apply default api */
     const [urls, setUrls] = React.useState([]);
 
@@ -26,9 +26,7 @@ export default function App()
     /** apply default authuntuicate */
     const [authunticate, setAuthunticate] = React.useState({}) ;
 
-
     React.useEffect(() => {
-
         (new Request(ALL_ROUTES)).get().then(function (response){
             setUrls(response?.data) ;
             fetchAndSaveTranslations(
@@ -36,10 +34,9 @@ export default function App()
                 setTranslations
             );
         })
-
     }, [] );
 
-    return (
+    return Object.keys(translations).length > 0 ? (
         <AuthunticateContext.Provider value={ authunticate }>
             <UrlContext.Provider value={urls}>
                 <LanguageContext.Provider value={language}>
@@ -50,5 +47,8 @@ export default function App()
                 <ToastContainer autoClose={2000} />
             </UrlContext.Provider>
         </AuthunticateContext.Provider>
-    );
+    ) : <Loading /> ;
 }
+
+
+export default App ;

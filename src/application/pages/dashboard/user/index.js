@@ -15,9 +15,9 @@ const Users = () => {
     const [ deactiveUserCount , setDeactiveUsersCount ] = useState(0) ;
     const [ usersCount , setUsersCount ] = useState(0) ;
 
-    useEffect(() => {
+    useEffect(async () => {
 
-        (new Request(staticUsers)).auth().get().then(function(response){
+        await (new Request(staticUsers)).auth().get().then(function(response){
 
             setActiveUsersCount(
                 response.data.filter( (data) => data.count === EnumUser.TYPE_ACTIVE ).reduce( (total , data ) => total + data.count , 0 )
@@ -33,7 +33,7 @@ const Users = () => {
 
         });
 
-    } , [staticUsers]) ;
+    } , []) ;
 
 
     return (

@@ -10,20 +10,15 @@ import Auth from "../../core/classes/auth";
 
 const Dashboard = (props) => {
 
-
     const staticPosts = searchUrl(useContext(UrlContext) , URL.DASHBOARD.WIDGET.STATISTIC.POSTS) ;
 
     const [ postCount , setPostCount ] = useState(0) ;
     const [ pageCount , setPageCount ] = useState(0) ;
     const [ productCount , setProductCount ] = useState(0) ;
 
-    // console.log(
-    //     Auth.picture()
-    // );
+    useEffect(async () => {
 
-    useEffect(() => {
-
-        (new Request(staticPosts)).auth().get().then(function(response){
+        await (new Request(staticPosts)).auth().get().then(function(response){
 
             setPostCount(
                 response.data.filter( (data) => data.type === EnumPost.TYPE_POST ).reduce( (total , data ) => total + data.count , 0 )
@@ -39,7 +34,7 @@ const Dashboard = (props) => {
 
         });
 
-    } , [staticPosts])
+    } , [])
 
     return (
         <Container>
