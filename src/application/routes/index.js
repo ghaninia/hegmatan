@@ -29,6 +29,9 @@ const URL = {
                 POSTS : "api.v1.widget.statistic.posts" ,
                 USERS : "api.v1.widget.statistic.users" ,
             }
+        },
+        USER : {
+            INDEX : "api.v1.user.index"
         }
     }
 
