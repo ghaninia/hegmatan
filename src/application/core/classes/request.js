@@ -9,7 +9,7 @@ export default class Request{
         this.headers = headers;
     }
 
-    async request(method) {
+    request(method) {
         let { url , data , headers} = this ;
 
         if(this.token !== undefined) {
@@ -19,7 +19,7 @@ export default class Request{
             } ;
         }
 
-        return await axios({
+        return axios({
             method ,
             url ,
             headers ,

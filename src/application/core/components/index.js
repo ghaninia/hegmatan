@@ -6,7 +6,7 @@ import FormGroup from "./formGroup" ;
 import Textarea from "./textarea" ;
 import FormGroupWithIcon from "./formGroupWithIcon" ;
 import Page from "./page" ;
-
+import Checkbox from "./checkbox";
 export {
     Form ,
     Input ,
@@ -15,5 +15,6 @@ export {
     FormGroup ,
     FormGroupWithIcon ,
     Textarea ,
-    Page
+    Page ,
+    Checkbox
 };

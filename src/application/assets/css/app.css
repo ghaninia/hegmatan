@@ -65,8 +65,8 @@
     src: url(../fonts/iranyekanwebregular.eot) format("embedded-opentype"), url(../fonts/iranyekanwebregular.woff) format("woff"), url(../fonts/iranyekanwebregular.ttf) format("truetype")
 }
 
-.heavy {
-    font-family: YekanBalkhHeavy;
+.heavy , table thead tr th{
+    font-family: "YekanBalkhBold";
 }
 
 body {
@@ -112,6 +112,10 @@ p {
     line-height: 1.7;
     color: #bdbac2;
     margin-bottom: 0
+}
+
+table tbody {
+    font-size: 80% ;
 }
 
 .blue {
@@ -2953,5 +2957,155 @@ a.dropdown-item {
 
     100% {
         transform: rotateX(65deg) rotateZ(360deg) scale(1.7);
+    }
+}
+
+/** Table **/
+
+.table {
+    width: 100%;
+    margin-bottom: 1.5em;
+    border : transparent solid ;
+}
+
+.table {
+    border-collapse: collapse;
+    border : 0 none ;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow : 0 0 10px rgba(0,0,0,0.05)
+}
+
+.table th {
+    -moz-border-radius: 3px;
+    -webkit-border-radius: 3px;
+}
+
+.table thead {
+    position: absolute;
+    clip: rect(1px 1px 1px 1px);
+    border: 0;
+    overflow: hidden;
+    border-bottom: 1px #eee solid ;
+}
+
+.table thead th {
+    font-weight: normal;
+    padding: 20px 0 !important;
+    border : 0 transparent;
+    outline: 0 transparent;
+}
+
+.table tbody tr {
+    border-bottom: 1px rgba(0,0,0,.05) solid ;
+}
+
+.table tbody tr:nth-last-of-type(1){
+    border-bottom: 0 transparent ;
+}
+
+.table tbody tr td {
+    padding : 12px 0 ;
+}
+
+.table tbody,
+.table tr,
+.table th,
+.table td {
+    display: block;
+    padding: 0;
+    white-space: normal;
+    border : 0 transparent;
+}
+
+.table th,
+.table td {
+    padding: .5em;
+}
+
+.table caption {
+    margin-bottom: 1em;
+    font-size: 1em;
+    font-weight: bold;
+}
+
+.table tfoot {
+    font-size: .8em;
+}
+
+.table tbody tr {
+    margin-bottom: 1em;
+}
+.table tbody tr:last-of-type {
+    margin-bottom: 0;
+}
+.table tbody th[scope="row"] {
+    color: white;
+}
+.table tbody td[data-type=currency] {
+    text-align: right;
+}
+.table tbody td[data-title]:before {
+    content: attr(data-title);
+    float: left;
+    font-size: .8em;
+}
+
+@media (min-width: 52em) {
+    .table {
+        font-size: .9em;
+    }
+    .table thead {
+        position: relative;
+        clip: auto;
+        height: auto;
+        width: auto;
+        overflow: auto;
+    }
+    .table tr {
+        display: table-row;
+    }
+    .table th,
+    .table td {
+        display: table-cell;
+        padding: .5em;
+    }
+
+    .table caption {
+        font-size: 1.5em;
+    }
+    .table tbody {
+        display: table-row-group;
+    }
+    .table tbody tr {
+        display: table-row;
+        border-width: 1px;
+    }
+    .table tbody th[scope="row"] {
+        background-color: transparent;
+        color: #5e5d52;
+        text-align: left;
+    }
+    .table tbody td[data-title]:before {
+        content: none;
+    }
+}
+@media (min-width: 62em) {
+    .table {
+        font-size: 1em;
+    }
+    .table th,
+    .table td {
+        padding: .75em .5em;
+    }
+    .table tfoot {
+        font-size: .9em;
+    }
+}
+
+@media (min-width: 75em) {
+    .table th,
+    .table td {
+        padding: .75em;
     }
 }

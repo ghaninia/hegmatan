@@ -37,7 +37,8 @@ const Web = [
     {
         path: KEYS.HOME,
         main: () => <h2>main</h2> ,
-        middleware : [ "guest" ]
+        middleware : [ "guest" ] ,
+        exact : false
     },
     {
         path: KEYS.AUTH.LOGIN ,
