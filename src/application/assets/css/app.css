@@ -1,6 +1,23 @@
 @import "./bootstrap.min.css";
 @import "../fonts/icons/LineIcons/lineicons.css";
 
+:root {
+    --gradient : linear-gradient(to bottom, #FF5354 , #FF393C);
+    --shadow : 0 4px 8px rgba(255,129,130,0.5);
+    --primary : #FF5354 ;
+    --light-primary : #FF393C ;
+    --link-primary : #4763FF ;
+    --link-primary-hover : #637BFF ;
+    --link-primary-focus : #4352AB ;
+    --text-color : #2E2E09 ;
+    --background : #FFFFFF ;
+    --navigation : #FCFDFF ;
+    --white : #FFF ;
+    --font-bold : YekanBalkhHeavy ;
+    --radius : 15px ;
+    --border : 1px rgba(0,0,0,0.05) solid ;
+}
+
 @font-face {
     font-family: YekanBalkhHeavy;
     font-style: normal;
@@ -65,29 +82,18 @@
     src: url(../fonts/iranyekanwebregular.eot) format("embedded-opentype"), url(../fonts/iranyekanwebregular.woff) format("woff"), url(../fonts/iranyekanwebregular.ttf) format("truetype")
 }
 
-.heavy , table thead tr th{
+.heavy , .table thead tr th{
     font-family: "YekanBalkhBold";
 }
 
 body {
-    background: #EAECEF;
-    font-size: 16px;
+    background: var(--background);
+    font-size: 18px;
     font-weight: 600;
     line-height: 1.7;
     direction: rtl;
     position: relative;
-}
-
-body:after {
-    display: block;
-    content: "";
-    background: linear-gradient(to left, #222853, #294379);
-    height: 140px;
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    z-index: -1;
+    letter-spacing: -1px ;
 }
 
 * {
@@ -95,22 +101,21 @@ body:after {
 }
 
 a {
-    color: #212529;
+    color: var(--link-primary);
     -moz-transition: all 0.3s;
     -webkit-transition: all 0.3s;
     transition: all 0.3s
 }
 
 a:hover {
-    color: #007bff;
+    color: var(--link-primary-hover);
     text-decoration: none
 }
 
 p {
-    font-size: 16px;
     font-weight: 500;
     line-height: 1.7;
-    color: #bdbac2;
+    color: var(--text-color);
     margin-bottom: 0
 }
 
@@ -195,23 +200,21 @@ table tbody {
 }
 
 .form-control {
-    background: #f5f5f5;
-    color: #bdbac2;
+    background: transparent;
+    color: var(--text-color);
     border: none;
-    font-size: 16px;
     font-weight: 500;
     border-radius: 6px
 }
 
 .form-control:focus {
-    background: #f5f5f5;
-    color: #bdbac2;
+    background: transparent;
+    color: var(--link-primary-focus);
     border: none !important;
     box-shadow: none
 }
 
 .form-control::placeholder {
-    font-size: 16px;
     font-weight: 500;
     color: #bdbac2
 }
@@ -226,7 +229,6 @@ table tbody {
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 20px;
     color: #bababa;
 }
 
@@ -270,16 +272,16 @@ input[type="search"]::-webkit-search-cancel-button {
     display: inline-block;
     padding: 9px 0;
     width: 100%;
-    background: #007bff;
+    background: var(--primary);
     font-weight: 600;
     line-height: 1.7;
-    color: #fff;
+    color: var(--white);
     text-align: center;
     border-radius: 6px
 }
 
 .primary:hover {
-    color: #fff;
+    color: var(--white);
     opacity: .9
 }
 
@@ -348,9 +350,6 @@ input[type="search"]::-webkit-search-cancel-button {
 }
 
 .pages .item {
-    background: #fff;
-    border-radius: 6px;
-    box-shadow: 0 0 30px rgba(0, 0, 0, .03);
     -moz-transition: all .3s;
     -webkit-transition: all .3s;
     transition: all .3s;
@@ -371,7 +370,6 @@ input[type="search"]::-webkit-search-cancel-button {
 .pages h5 {
     text-align: center;
     padding: 30px;
-    font-size: 18px;
     font-weight: 600;
     margin-bottom: 0
 }
@@ -568,7 +566,6 @@ a.dropdown-item {
     justify-content: space-between;
     padding: 30px 15px;
     width: 100%;
-    background: #fff
 }
 
 .navigation .container::-webkit-scrollbar {
@@ -600,7 +597,6 @@ a.dropdown-item {
 }
 
 .navigation .menu h2 {
-    font-size: 16px;
     font-weight: 600;
     line-height: 1.7;
     margin-bottom: 25px
@@ -618,49 +614,39 @@ a.dropdown-item {
 }
 
 .navigation .menu ul>li {
-    display: block
+    display: block ;
+    margin-bottom: 10px;
 }
 
-/*.navigation .menu ul>li + li {*/
-/*    margin-top: 15px*/
-/*}*/
-
-.navigation .menu ul>li .feather {
-    width: 10px;
-    height: 10px;
+.navigation .menu ul>li i {
     vertical-align: unset;
-    margin-left: 15px
-}
-
-.navigation .menu .secondary ul>li>a {
-    padding-right: 30px;
+    font-weight: bold;
+    opacity: 0.8 ;
 }
 
 .navigation .menu ul>li>a {
+    transition: all .3s ease ;
     font-weight: 500;
-    color: #bdbac2;
+    color: var(--dark);
+    opacity: 0.9 ;
     display: flex;
     align-items: center;
-    padding: 8px;
-    border-radius: 35px;
+    padding:15px 8px;
+    border-radius: var(--radius);
+    font-family: var(--font-bold) ;
 }
 
-.navigation .menu ul>li>a.active {
-    color: #0069d9;
+.navigation .menu ul>li>a.active ,
+.navigation .menu ul>li a:hover {
+    background: var(--gradient);
+    color : var(--white) ;
+    box-shadow: var(--shadow) ;
+    text-shadow: var(--shadow);
 }
 
 .navigation .menu ul>li>a>i {
     display: block;
     padding: 0 10px;
-}
-
-.navigation .menu ul>li.active a {
-    color: #007bff
-}
-
-.navigation .menu ul>li a:hover {
-    color: #2c4982 !important;
-    background: #eef2f8 !important;
 }
 
 .navigation .menu ul>li>a[data-toggle="collapse"] {
@@ -698,7 +684,6 @@ a.dropdown-item {
 }
 
 .navigation .menu .secondary ul>li {
-    font-size: 15px
 }
 
 .navigation .menu .secondary ul>li:first-child {
@@ -782,7 +767,6 @@ a.dropdown-item {
 }
 
 .hero p {
-    font-size: 18px
 }
 
 .hero .progress {
@@ -985,7 +969,6 @@ a.dropdown-item {
 }
 
 .tasks .list h4 {
-    font-size: 18px;
     font-weight: 600;
     margin-bottom: 30px
 }
@@ -1006,7 +989,6 @@ a.dropdown-item {
 }
 
 .tasks .item .content h5 {
-    font-size: 16px;
     font-weight: 600;
     margin-bottom: 3px
 }
@@ -1189,7 +1171,6 @@ a.dropdown-item {
 }
 
 .task .notes .item h5 {
-    font-size: 18px;
     font-weight: 600;
     line-height: 1.7;
     margin-bottom: 0
@@ -1231,7 +1212,6 @@ a.dropdown-item {
 }
 
 .kanban-board .list h4 {
-    font-size: 18px;
     font-weight: 600;
     margin-bottom: 30px
 }
@@ -1355,13 +1335,11 @@ a.dropdown-item {
 }
 
 .chat .sidebar .members-list .item h5 {
-    font-size: 16px;
     font-weight: 600;
     margin-bottom: 7px
 }
 
 .chat .sidebar .members-list .item p {
-    font-size: 15px;
     line-height: 1
 }
 
@@ -1433,7 +1411,6 @@ a.dropdown-item {
 }
 
 .chat .discussion .top .team h5 {
-    font-size: 18px;
     font-weight: 600;
     line-height: 1;
     margin-bottom: 7px
@@ -1530,7 +1507,6 @@ a.dropdown-item {
 
 .chat .discussion .message span {
     display: block;
-    font-size: 15px;
     font-weight: 500;
     line-height: 1.2;
     color: #bdbac2;
@@ -1692,7 +1668,6 @@ a.dropdown-item {
 }
 
 .settings .sub h5 {
-    font-size: 16px;
     font-weight: 600;
     margin-bottom: 15px
 }
@@ -1708,6 +1683,19 @@ a.dropdown-item {
     -ms-flex-align: center;
     align-items: center;
     min-height: 100vh;
+    background : #f2f2f2 ;
+    position: relative;
+}
+
+.sign:after {
+    display: block;
+    content: "";
+    height: 140px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    background: var(--gradient);
 }
 
 .sign .item {
@@ -1721,6 +1709,8 @@ a.dropdown-item {
     border-radius: 6px;
     box-shadow: 0 0 30px rgba(0, 0, 0, .03);
     transition: all .3s ease;
+    z-index: 9 ;
+    position: relative;
 }
 
 .sign form:hover {
@@ -1741,7 +1731,7 @@ a.dropdown-item {
 
 .sign a {
     font-weight: 500;
-    color: #007bff
+    color: var(--primary)
 }
 
 .sign a:hover {
@@ -1767,7 +1757,13 @@ a.dropdown-item {
 .sign .form-control {
     padding: 0 55px 0 20px;
     width: 100%;
-    height: 55px
+    height: 55px ;
+    background: var(--light);
+    border-radius: 10px ;
+}
+
+.sign .btn.primary{
+    width: 100% ;
 }
 
 .sign .prepend {
@@ -1796,7 +1792,8 @@ a.dropdown-item {
 }
 
 .sign .primary {
-    padding: 14px 0
+    padding: 14px 0 ;
+    box-shadow: var(--shadow);
 }
 
 .sign .authFooterMenu {
@@ -1820,7 +1817,6 @@ a.dropdown-item {
 }
 
 .error h1 {
-    font-size: 150px;
     font-weight: 800;
     color: #007bff
 }
@@ -1828,7 +1824,6 @@ a.dropdown-item {
 .error p {
     width: 100%;
     max-width: 500px;
-    font-size: 32px;
     line-height: 1.5;
     margin: 0 auto
 }
@@ -1851,7 +1846,6 @@ a.dropdown-item {
 }
 
 .rectangles .item h5 {
-    font-size: 18px;
     font-weight: 600;
     line-height: 1.7;
     margin-bottom: 0
@@ -1958,7 +1952,6 @@ a.dropdown-item {
 }
 
 .snippets .item h5 {
-    font-size: 16px;
     font-weight: 600;
     white-space: normal;
     margin-bottom: 8px
@@ -1966,7 +1959,6 @@ a.dropdown-item {
 
 .snippets .item span {
     display: block;
-    font-size: 15px;
     font-weight: 500;
     line-height: 1;
     color: #bdbac2
@@ -2036,7 +2028,6 @@ a.dropdown-item {
 }
 
 .members .item h5 {
-    font-size: 16px;
     font-weight: 600;
     margin-bottom: 7px
 }
@@ -2116,7 +2107,6 @@ a.dropdown-item {
 }
 
 .modal-body .new h5 {
-    font-size: 16px;
     font-weight: 600;
     margin-bottom: 15px
 }
@@ -2390,10 +2380,12 @@ a.dropdown-item {
     }
 }
 
+.navigation {
+    background: var(--navigation) !important;
+}
+
 @media (max-width:991px) {
     .navigation {
-        background: #fff;
-        box-shadow: 0 0 10px rgba(0, 0, 0, .03);
         position: -webkit-sticky;
         position: sticky;
         top: 0;
@@ -2477,7 +2469,6 @@ a.dropdown-item {
 
     .tasks .item .content h5 {
         padding-left: 30px;
-        font-size: 18px;
         line-height: 1.7;
         margin-bottom: 10px
     }
@@ -2540,7 +2531,8 @@ a.dropdown-item {
         display: none
     }
 
-    .modal-header {
+    .modal-h
+    eader {
         padding: 25px 15px
     }
 
@@ -2549,11 +2541,9 @@ a.dropdown-item {
     }
 
     .error h1 {
-        font-size: 60px
     }
 
     .error p {
-        font-size: 18px;
         line-height: 1.7
     }
 }
@@ -2672,15 +2662,15 @@ a.dropdown-item {
 
 .widget {
     margin-bottom: 1.875rem;
-    background-color: #fff;
     transition: all .5s ease-in-out;
     position: relative;
-    border-radius: 1.25rem;
     height: calc(100% - 30px);
     display: flex;
     flex-direction: column;
     min-width: 0;
     word-wrap: break-word;
+    border : var(--border) ;
+    border-radius: var(--radius);
 }
 
 .align-items-center {
@@ -2709,19 +2699,19 @@ a.dropdown-item {
     align-items: center;
     height: 40px;
     width: 40px;
-    border-radius: 50%;
+    border-radius: var(--radius) ;
     padding: 0;
     margin: 0;
     overflow: hidden;
     line-height: 0;
+    border : var(--border) ;
 }
 
 .page {
     position: relative;
     display: block;
-    border-radius: 5px;
-    box-shadow: 0 4px 8px 0 rgb(19 37 71 / 10%);
-    background-color: #fff;
+    border-radius: var(--radius) ;
+    border : var(--border) ;
 }
 
 
@@ -2768,7 +2758,7 @@ a.dropdown-item {
 
 .page .page-title .page-title_body h1 {
     font-size: 120%;
-    font-family: YekanBalkhHeavy
+    font-family: var(--font-bold)
 }
 
 .page .page-body {
@@ -2798,10 +2788,10 @@ a.dropdown-item {
 .page .form-group input.form-control,
 .page .form-group textarea.form-control {
     display: unset;
-    background: #fff;
+    background: var(--white) ;
     padding: 12px !important;
     height: auto;
-    border: 1px #D5D7E1 solid;
+    border: var(--border);
     border-radius: 5px;
     font-size: 14px;
     color: #272727;
@@ -2813,11 +2803,11 @@ a.dropdown-item {
 
 .page .form-group input.form-control:focus~label,
 .page .form-group input.form-control:not([value=""])~label {
-    background: #fff;
     top: -10px;
     font-size: 70%;
     padding: 0 5px;
     border-radius: 10px;
+    background: var(--white) ;
 }
 
 .page .form-group textarea.form-control:focus~label,
@@ -2826,31 +2816,32 @@ a.dropdown-item {
 }
 
 .page .form-group textarea.form-control:focus {
-    border: 1px solid #2b4a83 !important;
-    box-shadow: 0 0 2px #2b4a83
+    border: 1px solid var(--primary) !important;
+    box-shadow: 0 0 2px var(--light-primary)
 }
 
 .page .form-group input.form-control:focus,
 .page .form-group input.form-control:active,
 .page .form-group textarea.form-control:focus,
 .page .form-group textarea.form-control:active {
-    border: 1px solid #2b4a83 !important;
-    box-shadow: 0 0 2px #2b4a83
+    border: 1px solid var(--primary) !important;
+    box-shadow: 0 0 2px var(--light-primary)
 }
 
-.page button.btn.primary {
-    color: #fff;
-    background: #2b4a83;
-    box-shadow: 0 2px 5px 0 rgb(0 0 0 / 20%);
-    border-radius: 10px;
-    font-size: 14px;
+button.btn {
+    display: unset;
+    padding : 10px 20px;
     width: -moz-max-content;
     width: max-content;
-    height: 34px;
     position: relative;
-    padding: 0 14px;
 }
 
+button.btn.primary {
+    color : var(--white);
+    background : var(--gradient) ;
+    shadow : var(--shadow) ;
+    border-radius: var(--radius);
+}
 
 /*** loading ***/
 
@@ -2963,49 +2954,74 @@ a.dropdown-item {
 /** Table **/
 
 .table {
-    width: 100%;
-    margin-bottom: 1.5em;
-    border : transparent solid ;
+    display: table;
+    table-layout: auto;
+    border-radius: var(--radius);
+    border: 10px var(--primary) solid ;
+    box-shadow : var(--shadow) ;
+    position: relative;
+    border-collapse: separate;
+    margin : 0 !important
 }
 
-.table {
-    border-collapse: collapse;
-    border : 0 none ;
-    border-radius: 10px;
-    overflow: hidden;
-    box-shadow : 0 0 10px rgba(0,0,0,0.05)
+.table .thead-primary td,
+.table .thead-primary th {
+    border-spacing: 0 ;
+    color : var(--white)
 }
 
-.table th {
-    -moz-border-radius: 3px;
-    -webkit-border-radius: 3px;
+.table .btn {
+    padding: 0;
 }
 
-.table thead {
-    position: absolute;
-    clip: rect(1px 1px 1px 1px);
-    border: 0;
-    overflow: hidden;
-    border-bottom: 1px #eee solid ;
-}
+/*.table:after , .table:before {*/
+/*    content: "";*/
+/*    display: block;*/
+/*    position: absolute;*/
+/*    border-radius: 0 0 10px 10px ;*/
+/*}*/
+
+/*.table:after {*/
+/*    bottom: -10px ;*/
+/*    left : 10px ;*/
+/*    right: 10px ;*/
+/*    height: 10px ;*/
+/*    background: #c9c9c9;*/
+/*}*/
+
+/*.table:before {*/
+/*    bottom: -20px ;*/
+/*    left : 30px ;*/
+/*    right: 30px ;*/
+/*    height: 10px ;*/
+/*    background: #eee ;*/
+/*}*/
 
 .table thead th {
-    font-weight: normal;
-    padding: 20px 0 !important;
-    border : 0 transparent;
-    outline: 0 transparent;
+    vertical-align: unset !important;
+    padding: 20px 0 17px!important;
+    border : none ;
+    border-bottom: 1px rgba(0,0,0,.1) solid !important;
 }
 
-.table tbody tr {
-    border-bottom: 1px rgba(0,0,0,.05) solid ;
+.table tbody tr{
+    border-bottom: 1px rgba(0,0,0,.04) solid ;
+    color : var(--gray-dark) ;
+    transition: all .3s ease ;
+    background: transparent;
+}
+
+.table tbody tr:hover{
+    background: var(--light);
+}
+
+.table tbody tr td ,
+.table thead tr th{
+    padding: 15px 10px 10px !important;
 }
 
 .table tbody tr:nth-last-of-type(1){
     border-bottom: 0 transparent ;
-}
-
-.table tbody tr td {
-    padding : 12px 0 ;
 }
 
 .table tbody,
@@ -3018,11 +3034,6 @@ a.dropdown-item {
     border : 0 transparent;
 }
 
-.table th,
-.table td {
-    padding: .5em;
-}
-
 .table caption {
     margin-bottom: 1em;
     font-size: 1em;
@@ -3033,9 +3044,6 @@ a.dropdown-item {
     font-size: .8em;
 }
 
-.table tbody tr {
-    margin-bottom: 1em;
-}
 .table tbody tr:last-of-type {
     margin-bottom: 0;
 }
@@ -3050,6 +3058,11 @@ a.dropdown-item {
     float: left;
     font-size: .8em;
 }
+
+.table .btn {
+    padding: 0;
+}
+
 
 @media (min-width: 52em) {
     .table {
@@ -3079,11 +3092,9 @@ a.dropdown-item {
     }
     .table tbody tr {
         display: table-row;
-        border-width: 1px;
     }
     .table tbody th[scope="row"] {
         background-color: transparent;
-        color: #5e5d52;
         text-align: left;
     }
     .table tbody td[data-title]:before {
@@ -3102,10 +3113,141 @@ a.dropdown-item {
         font-size: .9em;
     }
 }
-
 @media (min-width: 75em) {
     .table th,
     .table td {
         padding: .75em;
     }
+}
+
+@media (max-width: 720px) {
+    .table {
+        border : none ;
+        box-shadow: 0 0 0 transparent;
+    }
+    .table thead {
+        display: none;
+    }
+    .table tbody tr{
+        display: flex ;
+        flex-direction: column;
+        column-count: 2 ;
+        border-radius: var(--radius);
+        border: 5px var(--primary) solid ;
+        margin : 0 0 10px ;
+        position: relative ;
+    }
+    .table tbody tr td {
+        flex : 1 1 50%
+    }
+    .table tbody tr .checkbox {
+        position: absolute ;
+        top : -20px ;
+        left : -20px ;
+    }
+    .table tbody tr .checkbox label {
+        box-shadow : 0 0 2px rgba(0,0,0,.1)
+    }
+    .table tbody tr .circle {
+        position: relative;
+        left: unset !important;
+        right: unset !important;
+        top : unset !important;
+        bottom: unset !important;
+    }
+}
+
+.checkbox {
+    display: block;
+    height: 20px ;
+    width: 20px ;
+    position: relative;
+    cursor: pointer;
+}
+
+.checkbox label{
+    display: block;
+    height: 90% ;
+    width: 90% ;
+    background : var(--light) ;
+    border-radius: 50% ;
+    position: relative;
+    cursor: pointer;
+    overflow: hidden;
+}
+
+.checkbox input + label:after{
+    display: block;
+    content: "" ;
+    position: absolute;
+    top : 20% ;
+    left: 20% ;
+    right: 20%;
+    bottom: 20% ;
+    height : 60% ;
+    width : 60% ;
+    border-radius: 50% ;
+    background: var(--gradient) ;
+    visibility: hidden ;
+    transition: all .3s ease ;
+    opacity: 0;
+    transform : scale(0) translateX(20px);
+}
+
+.checkbox input:checked + label:after{
+    visibility: visible;
+    opacity: 1 ;
+    transform : scale(1);
+}
+
+.checkbox input {
+    display: none;
+}
+
+.pagination {
+    display: inline-flex;
+    margin: 0 40px 0 0;
+    padding: 10px 20px;
+    background: var(--primary);
+    border-radius: 0 0 var(--radius) var(--radius);
+    box-shadow: var(--shadow) ;
+}
+
+.pagination .page-item .page-link {
+    color: #6c757d;
+    background-color: var(--light);
+    border-radius: 50% ;
+    height : 30px ;
+    width : 30px ;
+    border : none ;
+    line-height: 1.2;
+    font-size : 80%
+}
+
+.pagination .page-item {
+    margin : 0 5px
+}
+
+.pagination .page-item.active .page-link {
+    background: var(--light-primary);
+    color : var(--light)
+}
+
+.pagination .page-item.disabled .page-link {
+    opacity: 0.5 ;
+}
+
+.dropdown-item.active, .dropdown-item:active{
+    background: var(--primary);
+}
+
+.cricle{
+    display: inline-block ;
+    height: 10px ;
+    width: 10px ;
+    border-radius: 50% ;
+    background: #bababa ;
+    position: relative;
+    top : 2px ;
+    right : -15px ;
 }

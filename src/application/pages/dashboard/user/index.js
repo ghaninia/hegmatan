@@ -8,7 +8,9 @@ import URL, {searchUrl} from "../../../routes";
 import UrlContext from "../../../contexts/url";
 import EnumUser from "../../../core/Enums/EnumUser";
 import Paginator from "../../../core/components/pagination";
-import {useSearchParams} from "react-router-dom";
+import {NavLink, useSearchParams} from "react-router-dom";
+import {Dropdown, DropdownButton} from "react-bootstrap";
+import {KEYS} from "../../../routes/web";
 
 const Users = (props) => {
 
@@ -93,8 +95,6 @@ const Users = (props) => {
         fetchUsers(filters) ;
     };
 
-    console.log(marked) ;
-
     return (
         <Container>
             <div className="row">
@@ -109,20 +109,19 @@ const Users = (props) => {
                 </div>
             </div>
             <Page>
-                <table className="table ">
-                        <thead>
+                <table className="table" >
+                    <thead>
                         <tr>
-                            <th >
-                                { marked.length ?? 0 }
+                            <th>
                                 <Checkbox onChange={(e) => reChecKedCheckboxes(e , users?.data) }/>
                             </th>
-                            <th >{ useTrans("dashboard.fields.name") }</th>
-                            <th >{ useTrans("dashboard.fields.username") }</th>
-                            <th >{ useTrans("dashboard.fields.mobile") }</th>
-                            <th colSpan={2}></th>
+                            <th>{ useTrans("dashboard.fields.name") }</th>
+                            <th>{ useTrans("dashboard.fields.username") }</th>
+                            <th>{ useTrans("dashboard.fields.mobile") }</th>
+                            <th></th>
                         </tr>
-                        </thead>
-                        <tbody >
+                    </thead>
+                    <tbody>
                         {
                             users == null ?
                                 (<tr><td colSpan={5}></td></tr>) :
@@ -134,17 +133,27 @@ const Users = (props) => {
                                                 checked={ marked.includes(user?.id) ? "1" : "" }
                                             />
                                         </td>
-                                        <td>{user?.name}</td>
+                                        <td>
+                                            <div className="cricle"></div>
+                                            {user?.name}
+                                        </td>
                                         <td>{user?.username}</td>
                                         <td>{user?.mobile}</td>
-                                        <td>edit</td>
-                                        <td>delete</td>
+                                        <td>
+                                            <Dropdown>
+                                                <Dropdown.Toggle className="unset" variant="">
+                                                    <i className="lni lni-radio-button"></i>
+                                                </Dropdown.Toggle>
+                                                <Dropdown.Menu>
+                                                </Dropdown.Menu>
+                                            </Dropdown>
+                                        </td>
                                     </tr>
                                 ))
                         }
-                        </tbody>
-                    </table>
-                {/*<Paginator items={users} clousre={ (page) => handlePaginate(page) } />*/}
+                    </tbody>
+                </table>
+                <Paginator items={users} clousre={ (page) => handlePaginate(page) } />
             </Page>
         </Container>
     ) ;

@@ -81,10 +81,10 @@ export default function Sidebar () {
                             </div>
                         </Dropdown.Toggle>
                         <Dropdown.Menu>
-                            <NavLink className="dropdown-item" to={KEYS.DASHBOARD.PROFILE.INDEX}>
+                            <NavLink end className="dropdown-item" to={KEYS.DASHBOARD.PROFILE.INDEX}>
                                 { useTrans("dashboard.sidebar.profile.label") }
                             </NavLink>
-                            <NavLink className="dropdown-item" to={KEYS.DASHBOARD.PROFILE.PASSWORD}>
+                            <NavLink end className="dropdown-item" to={KEYS.DASHBOARD.PROFILE.PASSWORD}>
                                 { useTrans("dashboard.sidebar.profile.password") }
                             </NavLink>
                             <Dropdown.Item onClick={ () =>  logout()   }>

@@ -1,10 +1,12 @@
-import React from "react";
+import {uniqueId} from "../classes/documentor";
 
 const Checkbox = (props) => {
+    var id = uniqueId() ;
     return (
-        <>
-            <input type="checkbox" {...props}/>
-        </>
+        <div className="checkbox">
+            <input id={id} type="checkbox" {...props} />
+            <label htmlFor={id}></label>
+        </div>
     );
 };
 

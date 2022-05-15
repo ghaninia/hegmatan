@@ -10,11 +10,13 @@ const Paginator =  (props) => {
             itemsCountPerPage={items?.meta?.per_page ? items?.meta?.per_page : 0 }
             totalItemsCount={items?.meta?.total ? items?.meta?.total : 0}
             onChange={(pageNumber) => clousre(pageNumber) }
-            pageRangeDisplayed={8}
+            pageRangeDisplayed={5}
             itemClass="page-item"
             linkClass="page-link"
-            firstPageText={ useTrans("dashboard.pagination.firstPage") }
-            lastPageText={ useTrans("dashboard.pagination.lastPage") }
+            prevPageText={<i className="lni lni-chevron-right"></i>}
+            nextPageText={<i className="lni lni-chevron-left"></i>}
+            firstPageText={<i className="lni lni-angle-double-right"></i>}
+            lastPageText={<i className="lni lni-angle-double-left"></i>}
         />
     );
 }
