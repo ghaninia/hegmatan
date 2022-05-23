@@ -3,6 +3,9 @@ import Dashboard from "../pages/dashboard";
 import Profile , { Password as ProfilePassword } from "../pages/dashboard/profile";
 import Users from "../pages/dashboard/user";
 
+/**
+ * @type {{AUTH: {REGISTER: string, LOGIN: string, FORGET: string}, DASHBOARD: {PROFILE: {PASSWORD: string, INDEX: string}, ROLES: {INDEX: string}, MAIN: string, USERS: {INDEX: string, SHOW: string}, CATEGORIES: {CREATE: string, INDEX: string}, TAGS: {CREATE: string, INDEX: string}}, HOME: string}}
+ */
 export const KEYS = {
     HOME : "/" ,
     AUTH : {
@@ -14,6 +17,7 @@ export const KEYS = {
         MAIN : "/dashboard" ,
         USERS : {
             INDEX : "/dashboard/users" ,
+            SHOW : "/dashboard/users/:user"
         },
         ROLES : {
             INDEX : "/dashboard/roles" ,
@@ -33,6 +37,23 @@ export const KEYS = {
     },
 }
 
+/**
+ * get clients
+ * @param url
+ * @param arguments
+ * @returns {*}
+ * @constructor
+ */
+export const ClientRoute =  (url, data = {}) => {
+    for( const arg in data ) {
+        url = url.replace( arg , data[arg]) ;
+    }
+    return url ;
+};
+
+/**
+ * @type {[{path: string, exact: boolean, main: (function()), middleware: string[]}, {path: string, main: (function()), middleware: string[]}, {path: string, main: (function()), middleware: string[]}, {path: string, main: (function()), middleware: string[]}, {path: string, main: (function()), middleware: string[]}, null, null, null]}
+ */
 const Web = [
     {
         path: KEYS.HOME,
@@ -76,6 +97,4 @@ const Web = [
         middleware : [ "auth" ]
     }
 ]
-
-
 export default Web ;

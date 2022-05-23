@@ -19,12 +19,27 @@ export default class Request{
             } ;
         }
 
-        return axios({
-            method ,
-            url ,
-            headers ,
-            data
-        });
+
+        switch (method) {
+            case "post" : {
+                return axios({
+                    method ,
+                    url ,
+                    headers ,
+                    data
+                });
+            }
+            case "get" : {
+                url += (Object.keys(data).length) ? "?" + (new URLSearchParams(data)).toString() : "" ;
+                return axios({
+                    method ,
+                    url ,
+                    headers ,
+                });
+            }
+        }
+
+
     }
 
     auth(){

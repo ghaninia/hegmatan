@@ -10,7 +10,7 @@ import EnumUser from "../../../core/Enums/EnumUser";
 import Paginator from "../../../core/components/pagination";
 import {NavLink, useSearchParams} from "react-router-dom";
 import {Dropdown, DropdownButton} from "react-bootstrap";
-import {KEYS} from "../../../routes/web";
+import {KEYS , ClientRoute} from "../../../routes/web";
 
 const Users = (props) => {
 
@@ -92,8 +92,16 @@ const Users = (props) => {
     const handlePaginate = (page) => {
         var filters = { page , ...userFilters} ;
         setUserFilters(filters) ;
+        console.log(filters) ;
         fetchUsers(filters) ;
     };
+
+    var translation = {
+        name : useTrans("dashboard.fields.name") ,
+        username : useTrans("dashboard.fields.username") ,
+        mobile : useTrans("dashboard.fields.mobile") ,
+        detail : useTrans("dashboard.fields.detail") ,
+    } ;
 
     return (
         <Container>
@@ -115,9 +123,9 @@ const Users = (props) => {
                             <th>
                                 <Checkbox onChange={(e) => reChecKedCheckboxes(e , users?.data) }/>
                             </th>
-                            <th>{ useTrans("dashboard.fields.name") }</th>
-                            <th>{ useTrans("dashboard.fields.username") }</th>
-                            <th>{ useTrans("dashboard.fields.mobile") }</th>
+                            <th>{ translation.name }</th>
+                            <th>{ translation.username }</th>
+                            <th>{ translation.mobile }</th>
                             <th></th>
                         </tr>
                     </thead>
@@ -133,18 +141,21 @@ const Users = (props) => {
                                                 checked={ marked.includes(user?.id) ? "1" : "" }
                                             />
                                         </td>
-                                        <td>
+                                        <td data-title={ translation.name }>
                                             <div className="cricle"></div>
                                             {user?.name}
                                         </td>
-                                        <td>{user?.username}</td>
-                                        <td>{user?.mobile}</td>
+                                        <td data-title={ translation.username }>{user?.username}</td>
+                                        <td data-title={ translation.mobile }>{user?.mobile}</td>
                                         <td>
                                             <Dropdown>
                                                 <Dropdown.Toggle className="unset" variant="">
                                                     <i className="lni lni-radio-button"></i>
                                                 </Dropdown.Toggle>
                                                 <Dropdown.Menu>
+                                                    <NavLink end className="dropdown-item" to={ ClientRoute(KEYS.DASHBOARD.USERS.SHOW , {":user" : user.id}) }>
+                                                        { translation.detail }
+                                                    </NavLink>
                                                 </Dropdown.Menu>
                                             </Dropdown>
                                         </td>

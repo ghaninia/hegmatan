@@ -9,8 +9,8 @@ const Paginator =  (props) => {
             activePage={items?.meta?.current_page ? items?.meta?.current_page : 0}
             itemsCountPerPage={items?.meta?.per_page ? items?.meta?.per_page : 0 }
             totalItemsCount={items?.meta?.total ? items?.meta?.total : 0}
-            onChange={(pageNumber) => clousre(pageNumber) }
-            pageRangeDisplayed={5}
+            onChange={(pageNumber) => clousre(pageNumber)}
+            pageRangeDisplayed={2}
             itemClass="page-item"
             linkClass="page-link"
             prevPageText={<i className="lni lni-chevron-right"></i>}
