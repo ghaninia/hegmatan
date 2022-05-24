@@ -17,7 +17,7 @@ export const KEYS = {
         MAIN : "/dashboard" ,
         USERS : {
             INDEX : "/dashboard/users" ,
-            SHOW : "/dashboard/users/:user"
+            SHOW : "/dashboard/users/:user" , 
         },
         ROLES : {
             INDEX : "/dashboard/roles" ,
@@ -46,7 +46,8 @@ export const KEYS = {
  */
 export const ClientRoute =  (url, data = {}) => {
     for( const arg in data ) {
-        url = url.replace( arg , data[arg]) ;
+        url = url.replace( ":"+arg , data[arg]) ;
+        url = url.replace( "{"+arg+"}" , data[arg]) ;
     }
     return url ;
 };

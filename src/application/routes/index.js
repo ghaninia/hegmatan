@@ -31,7 +31,8 @@ const URL = {
             }
         },
         USER : {
-            INDEX : "api.v1.user.index"
+            INDEX : "api.v1.user.index" ,
+            DESTROY : "api.v1.user.destroy" ,
         }
     }
 

@@ -1,4 +1,4 @@
-import {Checkbox, Page} from "../../../core/components";
+import {Checkbox, Page , Confirm} from "../../../core/components";
 import Container from "../layouts/container";
 import Widget from "../../../core/components/widget";
 import useTrans from "../../../core/hooks/trans";
@@ -15,7 +15,10 @@ import {KEYS , ClientRoute} from "../../../routes/web";
 const Users = (props) => {
 
     const staticUsersURI = searchUrl(useContext(UrlContext) , URL.DASHBOARD.WIDGET.STATISTIC.USERS) ;
+    
     const usersURI = searchUrl(useContext(UrlContext) , URL.DASHBOARD.USER.INDEX) ;
+    const UserDestroyURI = searchUrl(useContext(UrlContext) , URL.DASHBOARD.USER.DESTROY) ;
+
     let [searchParams, setSearchParams] = useSearchParams();
     const [userFilters , setUserFilters ] = useState(Object.fromEntries([...searchParams])) ;
 
@@ -92,8 +95,13 @@ const Users = (props) => {
     const handlePaginate = (page) => {
         var filters = { page , ...userFilters} ;
         setUserFilters(filters) ;
-        console.log(filters) ;
         fetchUsers(filters) ;
+    };
+
+    const removeUser = (e , user) => {
+        e.preventDefault() ;
+        let route = ClientRoute(UserDestroyURI , {user} ) ;
+                
     };
 
     var translation = {
@@ -101,6 +109,7 @@ const Users = (props) => {
         username : useTrans("dashboard.fields.username") ,
         mobile : useTrans("dashboard.fields.mobile") ,
         detail : useTrans("dashboard.fields.detail") ,
+        remove : useTrans("dashboard.fields.delete")
     } ;
 
     return (
@@ -130,38 +139,42 @@ const Users = (props) => {
                         </tr>
                     </thead>
                     <tbody>
-                        {
-                            users == null ?
-                                (<tr><td colSpan={5}></td></tr>) :
-                                users.data.map((user , key) => (
-                                    <tr key={key}>
-                                        <td>
-                                            <Checkbox
-                                                onChange={ e => { setCheckHandler(e , user?.id) } }
-                                                checked={ marked.includes(user?.id) ? "1" : "" }
-                                            />
-                                        </td>
-                                        <td data-title={ translation.name }>
-                                            <div className="cricle"></div>
-                                            {user?.name}
-                                        </td>
-                                        <td data-title={ translation.username }>{user?.username}</td>
-                                        <td data-title={ translation.mobile }>{user?.mobile}</td>
-                                        <td>
-                                            <Dropdown>
-                                                <Dropdown.Toggle className="unset" variant="">
-                                                    <i className="lni lni-radio-button"></i>
-                                                </Dropdown.Toggle>
-                                                <Dropdown.Menu>
-                                                    <NavLink end className="dropdown-item" to={ ClientRoute(KEYS.DASHBOARD.USERS.SHOW , {":user" : user.id}) }>
-                                                        { translation.detail }
-                                                    </NavLink>
-                                                </Dropdown.Menu>
-                                            </Dropdown>
-                                        </td>
-                                    </tr>
-                                ))
-                        }
+                        {users == null ?
+                            (<tr><td colSpan={5}></td></tr>) :
+                            users.data.map((user , key) => (
+                                <tr key={key}>
+                                    <td>
+                                        <Checkbox
+                                            onChange={ e => { setCheckHandler(e , user?.id) } }
+                                            checked={ marked.includes(user?.id) ? "1" : "" }
+                                        />
+                                    </td>
+                                    <td data-title={ translation.name }>
+                                        <div className="cricle"></div>
+                                        {user?.name}
+                                    </td>
+                                    <td data-title={ translation.username }>{user?.username}</td>
+                                    <td data-title={ translation.mobile }>{user?.mobile}</td>
+                                    <td>
+                                        <Dropdown>
+                                            <Dropdown.Toggle className="unset" variant="">
+                                                <i className="lni lni-radio-button"></i>
+                                            </Dropdown.Toggle>
+                                            <Dropdown.Menu>
+                                                <NavLink end className="dropdown-item" to={ ClientRoute(KEYS.DASHBOARD.USERS.SHOW , {"user" : user.id}) }>
+                                                    { translation.detail }
+                                                </NavLink>
+                                                <NavLink 
+                                                    to="/"
+                                                    onClick = { (e) => removeUser(e ,user.id) } 
+                                                    end className="dropdown-item" >
+                                                    { translation.remove }
+                                                </NavLink>
+                                            </Dropdown.Menu>
+                                        </Dropdown>
+                                    </td>
+                                </tr>
+                        ))}
                     </tbody>
                 </table>
                 <Paginator items={users} clousre={ (page) => handlePaginate(page) } />
