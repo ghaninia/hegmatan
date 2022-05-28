@@ -26,7 +26,7 @@ const Input = React.forwardRef((props , ref) => {
     return (
         <>
             { showEyeComponent }
-            <input type={ type } className="form-control" {...otherProps} ref={ref} value={ value } onChange={ e => setValue(e.target.value) } />
+            <input type={ type } className="form-control" {...otherProps} ref={ref} defaultValue={ value } onChange={ e => setValue(e.target.value) } />
         </>
     )
 })

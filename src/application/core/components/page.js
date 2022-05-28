@@ -21,7 +21,7 @@ const Page = (props) => {
                         { hasBack ? <GoBack /> : null }
                         <div className="page-title_body">
                             { title?.length ? <h1>{title}</h1> : null }
-                            { description?.length ? <small>{description}</small> : null }
+                            { description ? <small>{description}</small> : null }
                         </div>
                     </div>
                 ) : null

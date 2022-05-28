@@ -1,11 +1,9 @@
 import Auth from "../pages/auth" ;
 import Dashboard from "../pages/dashboard";
 import Profile , { Password as ProfilePassword } from "../pages/dashboard/profile";
-import Users from "../pages/dashboard/user";
+import Users , {Show as UserShow} from "../pages/dashboard/user";
 
-/**
- * @type {{AUTH: {REGISTER: string, LOGIN: string, FORGET: string}, DASHBOARD: {PROFILE: {PASSWORD: string, INDEX: string}, ROLES: {INDEX: string}, MAIN: string, USERS: {INDEX: string, SHOW: string}, CATEGORIES: {CREATE: string, INDEX: string}, TAGS: {CREATE: string, INDEX: string}}, HOME: string}}
- */
+
 export const KEYS = {
     HOME : "/" ,
     AUTH : {
@@ -17,7 +15,7 @@ export const KEYS = {
         MAIN : "/dashboard" ,
         USERS : {
             INDEX : "/dashboard/users" ,
-            SHOW : "/dashboard/users/:user" , 
+            SHOW : "/dashboard/users/:user" ,
         },
         ROLES : {
             INDEX : "/dashboard/roles" ,
@@ -52,9 +50,6 @@ export const ClientRoute =  (url, data = {}) => {
     return url ;
 };
 
-/**
- * @type {[{path: string, exact: boolean, main: (function()), middleware: string[]}, {path: string, main: (function()), middleware: string[]}, {path: string, main: (function()), middleware: string[]}, {path: string, main: (function()), middleware: string[]}, {path: string, main: (function()), middleware: string[]}, null, null, null]}
- */
 const Web = [
     {
         path: KEYS.HOME,
@@ -95,6 +90,11 @@ const Web = [
     {
         path : KEYS.DASHBOARD.USERS.INDEX ,
         main: () => <Users /> ,
+        middleware : [ "auth" ]
+    },
+    {
+        path : KEYS.DASHBOARD.USERS.SHOW ,
+        main: () => <UserShow /> ,
         middleware : [ "auth" ]
     }
 ]

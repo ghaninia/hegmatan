@@ -1,5 +1,5 @@
-const TYPE_ACTIVE = 1 ;
-const TYPE_DEACTIVE = 0 ;
+const TYPE_ACTIVE = true ;
+const TYPE_DEACTIVE = false ;
 
 export default {
     TYPE_ACTIVE ,

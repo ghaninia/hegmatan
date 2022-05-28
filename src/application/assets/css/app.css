@@ -86,21 +86,17 @@
     font-family: "YekanBalkhBold";
 }
 
-/* width */
 ::-webkit-scrollbar {
-    width: 5px;
+    width: 1px;
 }
 
-/* Track */
 ::-webkit-scrollbar-track {
 }
 
-/* Handle */
 ::-webkit-scrollbar-thumb {
-    background: var(--primary);
+    background: var(--light-primary);
 }
 
-/* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
     background: var(--light-primary);
 }
@@ -580,7 +576,7 @@ a.dropdown-item {
 .navigation .container {
     display: -ms-flexbox;
     display: flex;
-    flex-direction: row-reverse;
+    flex-direction: row;
     -ms-flex-pack: justify;
     justify-content: space-between;
     padding: 30px 15px;
@@ -672,7 +668,7 @@ a.dropdown-item {
     position: relative;
     display: -ms-flexbox;
     display: flex;
-    flex-direction: row-reverse;
+    flex-direction: row;
     -ms-flex-align: center;
     align-items: center;
     -ms-flex-pack: justify;
@@ -800,7 +796,7 @@ a.dropdown-item {
 .hero .meta {
     display: -ms-flexbox;
     display: flex;
-    flex-direction: row-reverse;
+    flex-direction: row;
     -ms-flex-align: center;
     align-items: center;
     -ms-flex-pack: justify;
@@ -810,7 +806,7 @@ a.dropdown-item {
 .hero .meta span {
     display: -ms-flexbox;
     display: flex;
-    flex-direction: row-reverse;
+    flex-direction: row;
     -ms-flex-align: center;
     align-items: center;
     font-weight: 500;
@@ -1015,7 +1011,7 @@ a.dropdown-item {
 .tasks .item .meta {
     display: -ms-flexbox;
     display: flex;
-    flex-direction: row-reverse;
+    flex-direction: row;
     -ms-flex-align: center;
     align-items: center;
     -ms-flex-pack: justify;
@@ -1025,7 +1021,7 @@ a.dropdown-item {
 .tasks .item .meta span {
     display: -ms-flexbox;
     display: flex;
-    flex-direction: row-reverse;
+    flex-direction: row;
     -ms-flex-align: center;
     align-items: center;
     font-weight: 500;
@@ -1081,7 +1077,7 @@ a.dropdown-item {
 .task .checklist .item {
     display: -ms-flexbox;
     display: flex;
-    flex-direction: row-reverse;
+    flex-direction: row;
     -ms-flex-align: center;
     align-items: center;
     padding: 30px;
@@ -1182,7 +1178,7 @@ a.dropdown-item {
 .task .notes .item .top {
     display: -ms-flexbox;
     display: flex;
-    flex-direction: row-reverse;
+    flex-direction: row;
     align-items: baseline;
     -ms-flex-pack: justify;
     justify-content: space-between;
@@ -1324,7 +1320,7 @@ a.dropdown-item {
 .chat .sidebar .members-list .item {
     display: -ms-flexbox;
     display: flex;
-    flex-direction: row-reverse;
+    flex-direction: row;
     -ms-flex-align: center;
     align-items: center;
     padding: 25px 0;
@@ -1408,7 +1404,7 @@ a.dropdown-item {
 .chat .discussion .top .container {
     display: -ms-flexbox;
     display: flex;
-    flex-direction: row-reverse;
+    flex-direction: row;
     -ms-flex-align: center;
     align-items: center
 }
@@ -1416,7 +1412,7 @@ a.dropdown-item {
 .chat .discussion .top .team {
     display: -ms-flexbox;
     display: flex;
-    flex-direction: row-reverse;
+    flex-direction: row;
     -ms-flex-align: center;
     align-items: center;
     margin-left: auto
@@ -1665,32 +1661,6 @@ a.dropdown-item {
     min-height: 100px
 }
 
-.settings .sub {
-    display: -ms-flexbox;
-    display: flex;
-    flex-direction: row-reverse;
-    -ms-flex-align: baseline;
-    align-items: baseline;
-    -ms-flex-pack: justify;
-    justify-content: space-between;
-    padding: 30px 0;
-    border-bottom: 2px solid #fbfbfb
-}
-
-.settings .sub:first-child {
-    padding-top: 0
-}
-
-.settings .sub:last-of-type {
-    padding-bottom: 0;
-    border-bottom: none
-}
-
-.settings .sub h5 {
-    font-weight: 600;
-    margin-bottom: 15px
-}
-
 .settings .primary {
     padding: 14px 0
 }
@@ -1857,7 +1827,7 @@ a.dropdown-item {
 .rectangles .item .top {
     display: -ms-flexbox;
     display: flex;
-    flex-direction: row-reverse;
+    flex-direction: row;
     align-items: baseline;
     -ms-flex-pack: justify;
     justify-content: space-between;
@@ -1894,7 +1864,7 @@ a.dropdown-item {
 .rectangles .item .meta {
     display: -ms-flexbox;
     display: flex;
-    flex-direction: row-reverse;
+    flex-direction: row;
     -ms-flex-align: center;
     align-items: center;
     -ms-flex-pack: justify;
@@ -1904,7 +1874,7 @@ a.dropdown-item {
 .rectangles .item .meta span {
     display: -ms-flexbox;
     display: flex;
-    flex-direction: row-reverse;
+    flex-direction: row;
     -ms-flex-align: center;
     align-items: center;
     font-weight: 500;
@@ -1929,7 +1899,7 @@ a.dropdown-item {
 .snippets .item {
     display: -ms-flexbox;
     display: flex;
-    flex-direction: row-reverse;
+    flex-direction: row;
     -ms-flex-align: center;
     align-items: center;
     padding: 25px;
@@ -2343,7 +2313,7 @@ a.dropdown-item {
     .nav-side {
         display: -ms-flexbox;
         display: flex;
-        flex-direction: row-reverse;
+        flex-direction: row;
     }
 
     .navigation .container {
@@ -2390,7 +2360,7 @@ a.dropdown-item {
     .chat {
         display: -ms-flexbox;
         display: flex;
-        flex-direction: row-reverse;
+        flex-direction: row;
         height: 100vh
     }
 
@@ -2454,7 +2424,7 @@ a.dropdown-item {
     .tasks .item {
         display: -ms-flexbox;
         display: flex;
-        flex-direction: row-reverse;
+        flex-direction: row;
         -ms-flex-align: center;
         align-items: center
     }
@@ -2521,7 +2491,7 @@ a.dropdown-item {
 .titr {
     display: -ms-flexbox;
     display: flex;
-    flex-direction: row-reverse;
+    flex-direction: row;
     -ms-flex-wrap: wrap;
     flex-wrap: wrap;
     position: inline-block;
@@ -3030,6 +3000,15 @@ button.btn.primary {
     background: transparent;
 }
 
+.table tbody tr.deactive {
+    opacity: 0.5 ;
+    color : var(--danger)
+}
+
+.table tbody tr.deactive:hover {
+    opacity : 1
+}
+
 .table tbody tr:hover{
     background: var(--light);
 }
@@ -3095,7 +3074,7 @@ button.btn.primary {
     height: 90% ;
     width: 90% ;
     background : var(--light) ;
-    border-radius: 50% ;
+    border-radius: 5px  ;
     position: relative;
     cursor: pointer;
     overflow: hidden;
@@ -3112,12 +3091,12 @@ button.btn.primary {
     bottom: 20% ;
     height : 60% ;
     width : 60% ;
-    border-radius: 50% ;
+    border-radius: 3px ;
     background: var(--gradient) ;
     visibility: hidden ;
     transition: all .3s ease ;
     opacity: 0;
-    transform : scale(0) translateX(20px);
+    transform : scale(2);
 }
 
 .checkbox input:checked + label:after{
@@ -3167,18 +3146,24 @@ button.btn.primary {
     background: var(--primary);
 }
 
-.cricle{
-    display: inline-block ;
-    height: 10px ;
-    width: 10px ;
-    border-radius: 50% ;
-    background: #bababa ;
+.circle{
+    display: inline-block;
+    height: 10px;
+    width: 10px;
+    border-radius: 50%;
+    background: rgba(0,0,0,0.1);
     position: relative;
-    top : 2px ;
-    right : -15px ;
+    top: 2px;
+    margin: 0 0 0 5px;
 }
 
+.circle.active {
+    background : var(--green)
+}
 
+.circle.deactive {
+    background : var(--red)
+}
 
 @media (min-width: 52em) {
     .table {
@@ -3271,7 +3256,7 @@ button.btn.primary {
         top : unset !important;
         bottom: unset !important;
     }
-    .cricle {
+    .circle {
         position: inherit !important;
         bottom: auto;
         top: auto;
@@ -3331,4 +3316,22 @@ button.btn.primary {
     bottom : 0 ;
     background :rgba(0, 0, 0, .03) ;
     content : "" ;
+}
+
+
+.form-row .form-group-sub {
+    display: flex;
+    flex-direction: row;
+    -ms-flex-align: baseline;
+    align-items: baseline;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+    background: var(--white);
+    padding: 12px !important;
+    height: auto;
+    color : #4e555b !important ;
+    border: var(--border);
+    border-radius: 5px;
+    font-size : 70% ;
+    margin-bottom: 30px;
 }

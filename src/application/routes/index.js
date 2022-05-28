@@ -32,7 +32,9 @@ const URL = {
         },
         USER : {
             INDEX : "api.v1.user.index" ,
+            SHOW : "api.v1.user.show" ,
             DESTROY : "api.v1.user.destroy" ,
+            RESTORE : "api.v1.user.restore" ,
         }
     }
 

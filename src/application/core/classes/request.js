@@ -21,20 +21,20 @@ export default class Request{
 
 
         switch (method) {
-            case "post" : {
-                return axios({
-                    method ,
-                    url ,
-                    headers ,
-                    data
-                });
-            }
             case "get" : {
                 url += (Object.keys(data).length) ? "?" + (new URLSearchParams(data)).toString() : "" ;
                 return axios({
                     method ,
                     url ,
                     headers ,
+                });
+            }
+            default : {
+                return axios({
+                    method ,
+                    url ,
+                    headers ,
+                    data
                 });
             }
         }
@@ -55,4 +55,7 @@ export default class Request{
         return this.request('get');
     }
 
+    delete(){
+        return this.request('delete');
+    }
 }

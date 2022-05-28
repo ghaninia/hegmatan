@@ -9,7 +9,7 @@ export const fetchAndSaveTranslations = (routeUrl , setTranslations) => {
         .then(response => setTranslations(response));
 }
 
-const useTrans = (params) => {
+const useTrans = (params , data = {}) => {
 
     let translations = useContext(TranslationContext);
     let language = useContext(LanguageContext);
@@ -18,7 +18,13 @@ const useTrans = (params) => {
 
     const trans = params.split('.').reduce((prev, part) => prev && prev[part], translations);
 
-    return trans === undefined ? params : trans;
+    if(trans === undefined) return params ;
+
+    for( const arg in data ) {
+        trans = trans.replace( ":"+arg , data[arg]) ;
+    }
+
+    return trans;
 }
 
 
